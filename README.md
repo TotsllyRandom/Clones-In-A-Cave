@@ -8,3 +8,4 @@ May 29:
 		Finish ore sprites
 		make ore generation
 		obsidian + obsidian walls
+	

@@ -6,3 +6,5 @@
 [node name="Tile" type="TileMapLayer" unique_id=330818870]
 tile_set = ExtResource("1_ywnoi")
 script = ExtResource("1_3dk36")
+
+[connection signal="ready" from="." to="." method="_on_ready"]

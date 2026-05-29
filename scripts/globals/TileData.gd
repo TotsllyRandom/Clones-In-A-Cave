@@ -28,7 +28,7 @@ const TILES = [
 		"strength": 2, ## time it takes to mine
 		"sell_price": 1, ## money made from mining
 		"natural": true, ## true if it will naturally generate
-		"rarity": 65, ## spawn rarity, ignore if not natural
+		"rarity": 1, ## spawn rarity, ignore if not natural
 		"ore": false, ## true if it generates as an ore, not like stone
 		
 		## ore settings, ignore if not ore
@@ -48,7 +48,7 @@ const TILES = [
 	},
 	{
 		"name": "Gold",
-		"tml_id": 1,
+		"tml_id": 2,
 		"strength": 20, ## time it takes to mine
 		"sell_price": 50, ## money made from mining
 		"natural": true, ## true if it will naturally generate
@@ -60,7 +60,10 @@ const TILES = [
 	},
 ]
 
-func get_tile_by_name(name:String):
+func get_tile_by_name(n:String):
 	for tile in TILES:
-		if tile.get("name") == name:
-			return 
+		if tile.get("name") == n:
+			return tile
+
+#func get_array_of_rarities() -> Array:
+	#pass

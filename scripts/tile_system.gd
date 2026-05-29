@@ -37,12 +37,38 @@ func _on_main_game_start() -> void:
 	shift_map_data() ## make map data system readable
 	
 	## add ores
-	## grow ores
+	add_ores()
+	
+	## grow ores ( with add_ores() ?)
 	## structures?
 	## obsidian borders
 	## sync with other clients
 	make_tile_children()
-	
+
+## go through each tile and choose random (more likely for stone)
+func add_ores():
+	for y in range(map_data.size()):
+		for x in range(map_data[0].size()):
+			if map_data[y][x] == tile_data.get_tile_by_name("Stone").get("tml_id"):
+				## that's just a long way of saying "if the current tile is stone"
+				for tile in tile_data.TILES:
+					if tile.get("natural") and tile.get("ore"):
+						if randi_range(0,tile.get("rarity")) == 0:
+							grow_ore(x,y,tile.get("tml_id"),tile.get("grow_rate"))
+							break
+
+func grow_ore(x,y,id,rate):
+	if !out_of_bounds(x,y) and rate > 0:
+		map_data[y][x] = id
+		if randf() < .25:
+			grow_ore(x,y+1,id,rate-1)
+		if randf() < .25:
+			grow_ore(x,y-1,id,rate-1)
+		if randf() < .25:
+			grow_ore(x+1,y,id,rate-1)
+		if randf() < .25:
+			grow_ore(x-1,y,id,rate-1)
+
 func shift_map_data():
 	for y in range(map_data.size()):
 		for x in range(map_data[0].size()):
@@ -63,7 +89,6 @@ func make_tile_children():
 		t.name = tile.get("name")
 		t.data = tile
 		t.map_data = map_data
-		t.create()
 		add_child(t)
 
 func generate_noise() -> Array:
@@ -93,16 +118,19 @@ func fix_noise(noise: Array, overwrite: bool) -> Array:
 				0, ## bm
 				0, ## br
 			]
-			inputs[0] = get_item(noise,x-1,y-1,length[0],length[1])
-			inputs[1] = get_item(noise,x,y-1,length[0],length[1])
-			inputs[2] = get_item(noise,x+1,y-1,length[0],length[1])
-			inputs[3] = get_item(noise,x-1,y,length[0],length[1])
-			inputs[4] = get_item(noise,x+1,y,length[0],length[1])
-			inputs[5] = get_item(noise,x-1,y+1,length[0],length[1])
-			inputs[6] = get_item(noise,x,y+1,length[0],length[1])
-			inputs[7] = get_item(noise,x+1,y+1,length[0],length[1])
+			inputs[0] = get_item(noise,x-1,y-1)
+			inputs[1] = get_item(noise,x,y-1)
+			inputs[2] = get_item(noise,x+1,y-1)
+			inputs[3] = get_item(noise,x-1,y)
+			inputs[4] = get_item(noise,x+1,y)
+			inputs[5] = get_item(noise,x-1,y+1)
+			inputs[6] = get_item(noise,x,y+1)
+			inputs[7] = get_item(noise,x+1,y+1)
 			
-			var s = int(get_life_from_neighbors(inputs))
+			var s = 0
+			if get_life_from_neighbors(inputs):
+				s = noise[y][x]
+			
 			if overwrite:
 				if !(x >= length[0]-3 or y >= length[1]-3 or x <= 2 or y <= 2):
 					noise[y][x] = s
@@ -123,8 +151,16 @@ func get_life_from_neighbors(inputs: Array) -> bool:
 		value += i
 	return value > 4
 
-func get_item(noise: Array, x: int, y: int, x_length: int, y_length: int) -> int:
-	if x >= x_length or y >= y_length or x < 0 or y < 0:
+func get_item(noise: Array, x: int, y: int) -> int:
+	if out_of_bounds(x,y):
 		return 1
 	
 	return noise[y][x]
+
+func out_of_bounds(x,y):
+	var length = tile_data.map_size
+	var x_length = length[0]
+	var y_length = length[1]
+	if x >= x_length or y >= y_length or x < 0 or y < 0:
+		return true
+	return false

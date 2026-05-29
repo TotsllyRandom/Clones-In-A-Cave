@@ -5,16 +5,16 @@
 [ext_resource type="PackedScene" uid="uid://driuf4wwrnuw0" path="res://scenes/tile.tscn" id="3_tbgi4"]
 [ext_resource type="Script" uid="uid://c00628kl3tx13" path="res://scripts/debug_camera.gd" id="4_jyhfs"]
 
-[node name="Main" type="Node2D" unique_id=655071682]
+[node name="Main" type="Node" unique_id=2144361390]
 script = ExtResource("1_0wfyh")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1968772135]
+script = ExtResource("4_jyhfs")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1293944652]
 
 [node name="TileSystem" type="Node2D" parent="." unique_id=1052478466]
 script = ExtResource("2_sugp2")
 TILESCENE = ExtResource("3_tbgi4")
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1968772135]
-script = ExtResource("4_jyhfs")
 
 [connection signal="game_start" from="." to="TileSystem" method="_on_main_game_start"]
