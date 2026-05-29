@@ -30,8 +30,8 @@ func _on_main_game_start() -> void:
 	## fix noise
 	var data = generate_noise()
 	
-	for i in range(3):
-		data = fix_noise(data, false)
+	for i in range(8):
+		data = fix_noise(data, true)
 	data = fix_noise(data, true)
 	map_data = data
 	shift_map_data() ## make map data system readable
@@ -127,29 +127,30 @@ func fix_noise(noise: Array, overwrite: bool) -> Array:
 			inputs[6] = get_item(noise,x,y+1)
 			inputs[7] = get_item(noise,x+1,y+1)
 			
-			var s = 0
-			if get_life_from_neighbors(inputs):
-				s = noise[y][x]
+			var s = get_life_from_neighbors(inputs, noise[y][x])
 			
 			if overwrite:
 				if !(x >= length[0]-3 or y >= length[1]-3 or x <= 2 or y <= 2):
 					noise[y][x] = s
-				#else:
-					#noise[y][x] = 1
 			else:
 				current_line.append(s)
 		if !overwrite:
 			fixed.append(current_line)
+
 	if overwrite:
 		return noise
 	else:
 		return fixed
 
-func get_life_from_neighbors(inputs: Array) -> bool:
+func get_life_from_neighbors(inputs: Array,current) -> int:
 	var value := 0
 	for i in inputs:
 		value += i
-	return value > 4
+	if value >= 6:
+		return 1
+	elif value >= 4:
+		return current
+	return 0
 
 func get_item(noise: Array, x: int, y: int) -> int:
 	if out_of_bounds(x,y):
