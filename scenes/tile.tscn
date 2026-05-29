@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://driuf4wwrnuw0"]
+
+[ext_resource type="Script" uid="uid://c3crek4xwcn7g" path="res://scripts/tile.gd" id="1_3dk36"]
+[ext_resource type="TileSet" uid="uid://c5cve6tf5yyjl" path="res://godot resources/main_tile_set.tres" id="1_ywnoi"]
+
+[node name="Tile" type="TileMapLayer" unique_id=330818870]
+tile_set = ExtResource("1_ywnoi")
+script = ExtResource("1_3dk36")

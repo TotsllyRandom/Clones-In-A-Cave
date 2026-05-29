@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cwm841tc5a4rl" path="res://scripts/main.gd" id="1_0wfyh"]
 [ext_resource type="Script" uid="uid://couwg18fjmakf" path="res://scripts/tile_system.gd" id="2_sugp2"]
+[ext_resource type="PackedScene" uid="uid://driuf4wwrnuw0" path="res://scenes/tile.tscn" id="3_tbgi4"]
+[ext_resource type="Script" uid="uid://c00628kl3tx13" path="res://scripts/debug_camera.gd" id="4_jyhfs"]
 
 [node name="Main" type="Node2D" unique_id=655071682]
 script = ExtResource("1_0wfyh")
@@ -10,5 +12,9 @@ script = ExtResource("1_0wfyh")
 
 [node name="TileSystem" type="Node2D" parent="." unique_id=1052478466]
 script = ExtResource("2_sugp2")
+TILESCENE = ExtResource("3_tbgi4")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1968772135]
+script = ExtResource("4_jyhfs")
 
 [connection signal="game_start" from="." to="TileSystem" method="_on_main_game_start"]
