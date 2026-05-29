@@ -2,4 +2,9 @@
 
 *a 2d co-op horror mining game with roguelite elements*
 
-had to add a readme for the macondo project, but I'll update this more as I add systems and features
+May 29:
+	Finsihed BASIC cave generation.
+	Current tasks:
+		Finish ore sprites
+		make ore generation
+		obsidian + obsidian walls
