@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://c40q3segrffkw"]
+
+[ext_resource type="Script" uid="uid://cwm841tc5a4rl" path="res://scripts/main.gd" id="1_0wfyh"]
+[ext_resource type="Script" uid="uid://couwg18fjmakf" path="res://scripts/tile_system.gd" id="2_sugp2"]
+
+[node name="Main" type="Node2D" unique_id=655071682]
+script = ExtResource("1_0wfyh")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1293944652]
+
+[node name="TileSystem" type="Node2D" parent="." unique_id=1052478466]
+script = ExtResource("2_sugp2")
+
+[connection signal="game_start" from="." to="TileSystem" method="_on_main_game_start"]

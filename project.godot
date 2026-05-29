@@ -14,6 +14,10 @@ config/name="Clones In a Cave"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+tile_data="*uid://dvm5ksmqbpk6y"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
