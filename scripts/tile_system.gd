@@ -109,23 +109,15 @@ func fix_noise(noise: Array, overwrite: bool) -> Array:
 		current_line = []
 		for x in range(noise[0].size()):
 			var inputs = [
-				0, ## tl
-				0, ## tm
-				0, ## tr
-				0, ## ml
-				0, ## mr
-				0, ## bl
-				0, ## bm
-				0, ## br
+				get_item(noise,x-1,y-1), ## tl
+				get_item(noise,x,y-1), ## tm
+				get_item(noise,x+1,y-1), ## tr
+				get_item(noise,x-1,y), ## ml
+				get_item(noise,x+1,y), ## mr
+				get_item(noise,x-1,y+1), ## bl
+				get_item(noise,x,y+1), ## bm
+				get_item(noise,x+1,y+1), ## br
 			]
-			inputs[0] = get_item(noise,x-1,y-1)
-			inputs[1] = get_item(noise,x,y-1)
-			inputs[2] = get_item(noise,x+1,y-1)
-			inputs[3] = get_item(noise,x-1,y)
-			inputs[4] = get_item(noise,x+1,y)
-			inputs[5] = get_item(noise,x-1,y+1)
-			inputs[6] = get_item(noise,x,y+1)
-			inputs[7] = get_item(noise,x+1,y+1)
 			
 			var s = get_life_from_neighbors(inputs, noise[y][x])
 			
