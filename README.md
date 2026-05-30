@@ -7,7 +7,7 @@ Arrow Keys / WASD - Move Camera
 Left Click - Mine Tile
 R - reset mine
 
-## Features to be added in later updates**
+## Features to be added in later updates
 - Player Controler
 - Multiplayer Support
 - Quota System
