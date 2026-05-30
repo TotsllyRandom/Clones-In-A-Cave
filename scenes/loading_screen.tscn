@@ -2,35 +2,25 @@
 
 [ext_resource type="Script" uid="uid://dpm1jb1711rui" path="res://loading_screen.gd" id="1_ep5rh"]
 
-[node name="Loading Screen" type="Control" unique_id=1603090116]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ep5rh"]
+bg_color = Color(0.15307656, 0.15307656, 0.15307647, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ku3bi"]
+bg_color = Color(0.1494745, 0.14947453, 0.14947447, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hprjd"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="Loading Screen" type="CanvasLayer" unique_id=890911942]
 script = ExtResource("1_ep5rh")
 
 [node name="BG" type="Panel" parent="." unique_id=1935354773]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Label" type="Label" parent="BG" unique_id=2093526392]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = -99.0
-offset_right = 514.0
-offset_bottom = -10.0
-grow_vertical = 0
-text = "Loading..."
-vertical_alignment = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ep5rh")
 
 [node name="ProgressBar" type="ProgressBar" parent="BG" unique_id=445070902]
 layout_mode = 1
@@ -38,7 +28,22 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -8.0
+offset_top = -38.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_ku3bi")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hprjd")
 show_percentage = false
+
+[node name="Label" type="Label" parent="BG" unique_id=2093526392]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -33.0
+offset_right = 514.0
+offset_bottom = -10.0
+grow_vertical = 0
+text = "Loading..."
+vertical_alignment = 2

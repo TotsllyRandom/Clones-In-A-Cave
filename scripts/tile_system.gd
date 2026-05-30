@@ -29,23 +29,37 @@ func _on_main_game_start() -> void:
 	## generate noise
 	## fix noise
 	var data = generate_noise()
+	if get_parent().loading_screen_active:
+		get_parent().progress = 10
 	
 	for i in range(8):
 		data = fix_noise(data, true)
+		if get_parent().loading_screen_active:
+			get_parent().progress += 2.5
 	data = fix_noise(data, true)
+	if get_parent().loading_screen_active:
+		get_parent().progress += 2.5
 	map_data = data
 	shift_map_data() ## make map data system readable
+	if get_parent().loading_screen_active:
+		get_parent().progress = 40
 	
 	## add ores
 	add_ores()
+	if get_parent().loading_screen_active:
+		get_parent().progress = 80
 
 	## structures?
 	
 	## obsidian borders
-	map_data = obsidian(5)
+	map_data = obsidian(tile_data.obsidian_border)
+	if get_parent().loading_screen_active:
+		get_parent().progress += 90
 	
 	## sync with other clients
 	make_tile_children()
+	if get_parent().loading_screen_active:
+		get_parent().progress = 100
 
 func obsidian(border:int) -> Array:
 	var ret = []

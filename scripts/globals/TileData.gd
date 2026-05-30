@@ -2,6 +2,7 @@ extends Node
 
 # Map Variables:
 var map_size: Array = [200, 120] ## x size, y size
+var obsidian_border := 5
 
 # Tiles
 
