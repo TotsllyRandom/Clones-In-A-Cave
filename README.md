@@ -2,7 +2,7 @@
 
 *a 2d co-op horror mining game with roguelite elements*
 
-![Static Badge](https://img.shields.io/badge/Demo-Link?label=Itch.io&link=https%3A%2F%2Ftotsllyrandom.itch.io%2Fclonesinacave)
+[![Static Badge](https://img.shields.io/badge/Demo-Link?label=Itch.io&link=https%3A%2F%2Ftotsllyrandom.itch.io%2Fclonesinacave)](https://totsllyrandom.itch.io/clonesinacave)
 
 ## Controls
 Arrow Keys / WASD - Move Camera
