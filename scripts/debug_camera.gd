@@ -12,7 +12,8 @@ var limits = [
 func _ready() -> void:
 	limits[2] = (tile_data.map_size[0] + tile_data.obsidian_border * 2) * 32 - (get_viewport_rect().size.x / 2)
 	limits[3] = (tile_data.map_size[1] + tile_data.obsidian_border * 2) * 32 - (get_viewport_rect().size.y / 2)
-
+	position.x = limits[2]/2
+	position.y = limits[3]/2
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
