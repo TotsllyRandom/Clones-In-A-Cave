@@ -2,9 +2,20 @@
 
 *a 2d co-op horror mining game with roguelite elements*
 
-**Controls**
+## Controls
 Arrow Keys / WASD - Move Camera
 Left Click - Mine Tile
+R - reset mine
+
+## Features to be added in later updates**
+- Player Controler
+- Multiplayer Support
+- Quota System
+- Placable Objects
+- More ores
+- Structures
+
+Have suggestions or find a bug? Create an issue request!
 
 
 DEVLOG:
