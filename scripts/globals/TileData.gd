@@ -73,6 +73,55 @@ const TILES = [
 	},
 ]
 
+func sort_tiles(key: String) -> Array:
+	var ret = []
+	var timsort_types= [
+		TYPE_INT,
+	]
+	if timsort_types.has(typeof(TILES[0].get(key))):
+		var splits = []
+		var current_split = []
+		var current_val = TILES[0].get(key)
+		current_split.append(TILES[0])
+			
+		for i in range(1, TILES.size()):
+			var tile = TILES[i]
+			
+			if tile.get(key) < current_val:
+				splits.append(current_split)
+				current_split = []
+			
+			current_split.append(tile)
+			current_val = tile.get(key)
+		splits.append(current_split)
+		
+		while splits.size() > 1:
+			var new_splits = []
+			for i in range(0, splits.size(), 2):
+				var left = splits[i]
+				
+				if i + 1 >= splits.size():
+					new_splits.append(left)
+					continue
+				
+				var right = splits[i + 1]
+				
+				for item in right:
+					var inserted = false
+					for j in range(left.size()):
+						if left[j].get(key) >= item.get(key):
+							left.insert(j, item)
+							inserted = true
+							break
+					if !inserted:
+						left.append(item)
+				
+				new_splits.append(left)
+			splits = new_splits
+		ret = splits[0]
+	
+	return ret
+
 func get_tile_by_name(n:String):
 	for tile in TILES:
 		if tile.get("name") == n:
