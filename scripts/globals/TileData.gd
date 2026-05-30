@@ -34,6 +34,7 @@ const TILES = [
 		## ore settings, ignore if not ore
 		"grow_rate": 0, ## max times the vein will grow. 50/50 chance to grow once for each number
 	},
+	
 	{
 		"name": "Stone",
 		"tml_id": 0,

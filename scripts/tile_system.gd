@@ -42,17 +42,42 @@ func _on_main_game_start() -> void:
 	## structures?
 	
 	## obsidian borders
+	map_data = obsidian(5)
 	
 	## sync with other clients
 	make_tile_children()
 
-func obsidian(border:int):
+func obsidian(border:int) -> Array:
 	var ret = []
 	var current_line = []
+	
+	## top obsidian
 	for i in range(border):
 		current_line = []
-		for x in range(map_data[0].size + border * 2):
-			current_line.append(tile_data.get_tile_by_name("Obsidian"))
+		for x in range(map_data[0].size() + border * 2):
+			current_line.append(tile_data.get_tile_by_name("Obsidian").get("tml_id"))
+		ret.append(current_line)
+	
+	## obsidian on the sides
+	for y in range(map_data.size()):
+		current_line = []
+		for x in range(border):
+			current_line.append(tile_data.get_tile_by_name("Obsidian").get("tml_id"))
+		
+		for x in range(map_data[0].size()):
+			current_line.append(map_data[y][x])
+		
+		for x in range(border):
+			current_line.append(tile_data.get_tile_by_name("Obsidian").get("tml_id"))
+		ret.append(current_line)
+		
+	## bottom obsidian
+	for i in range(border):
+		current_line = []
+		for x in range(map_data[0].size() + border * 2):
+			current_line.append(tile_data.get_tile_by_name("Obsidian").get("tml_id"))
+		ret.append(current_line)
+	return ret
 
 ## go through each tile and choose random (more likely for stone)
 func add_ores():

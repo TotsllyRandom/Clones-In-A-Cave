@@ -2,18 +2,19 @@ extends TileMapLayer
 
 var data: Dictionary
 var map_data: Array
+@onready var id = data.get("tml_id")
 
 
 
 func create():
 	for y in range(map_data.size() + 1):
 		for x in range(map_data[0].size() + 1):
-			set_cell(Vector2i(x,y),data.get("tml_id"),get_best_fit_tile(x,y))
+			set_cell(Vector2i(x,y),id,get_best_fit_tile(x,y))
 
 func clamp_and_get_val(x,y) -> int:
 	if x < 0 or y < 0 or x >= map_data[0].size() or y >= map_data.size():
 		return 0
-	return int(map_data[y][x] == data.get("tml_id"))
+	return int(map_data[y][x] == id)
 
 func get_best_fit_tile(x,y) -> Vector2i:
 	var return_value := Vector2i(0,0)
