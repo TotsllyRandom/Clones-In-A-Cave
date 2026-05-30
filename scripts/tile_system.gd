@@ -4,9 +4,9 @@ extends Node2D
 
 @export var TILESCENE: PackedScene
 var map_data: Array
-var obsidian_border
 
 signal map_changed(x,y)
+signal map_data_changed(d)
 
 # on start: 
 # make map data (noise -> caves) ->
@@ -61,11 +61,16 @@ func _on_main_game_start() -> void:
 	if get_parent().loading_screen_active:
 		get_parent().progress = 100
 
+func clear():
+	map_data = []
+	for child in get_children():
+		child.queue_free()
 ## Mining Functions
 
 func mine(x,y):
-	if map_data[y][x] != -1:
+	if map_data[y][x] != -1 and map_data[y][x] != tile_data.get_tile_by_name("Obsidian").get("tml_id"):
 		map_data[y][x] = -1
+		map_data_changed.emit(map_data)
 		map_changed.emit(x,y)
 
 
@@ -143,6 +148,8 @@ func make_tile_children():
 		var t = TILESCENE.instantiate()
 		t.position.x = -16
 		t.position.y = -16
+		map_data_changed.connect(t.update_map_data)
+		map_changed.connect(t.update_tile)
 		t.name = tile.get("name")
 		t.data = tile
 		t.map_data = map_data

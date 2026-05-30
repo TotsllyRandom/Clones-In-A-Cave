@@ -4,7 +4,13 @@ var data: Dictionary
 var map_data: Array
 @onready var id = data.get("tml_id")
 
+func update_map_data(data):
+	map_data = data
 
+func update_tile(x,y):
+	for ex in range(x-1,x+2):
+		for wy in range(y-1,y+2):
+			set_cell(Vector2i(ex,wy),id,get_best_fit_tile(ex,wy))
 
 func create():
 	for y in range(map_data.size() + 1):
