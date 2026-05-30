@@ -61,6 +61,16 @@ func _on_main_game_start() -> void:
 	if get_parent().loading_screen_active:
 		get_parent().progress = 100
 
+## Mining Functions
+
+func mine(x,y):
+	if map_data[y][x] != -1:
+		map_data[y][x] = -1
+		map_changed.emit(x,y)
+
+
+## Creation Functions
+
 func obsidian(border:int) -> Array:
 	var ret = []
 	var current_line = []
@@ -93,7 +103,6 @@ func obsidian(border:int) -> Array:
 		ret.append(current_line)
 	return ret
 
-## go through each tile and choose random (more likely for stone)
 func add_ores():
 	for y in range(map_data.size()):
 		for x in range(map_data[0].size()):

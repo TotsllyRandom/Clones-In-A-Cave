@@ -109,6 +109,5 @@ func get_best_fit_tile(x,y) -> Vector2i:
 	
 	return return_value
 
-
 func _on_ready() -> void:
 	create()

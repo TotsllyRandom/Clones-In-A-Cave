@@ -37,3 +37,4 @@ tile_set = SubResource("TileSet_85g3d")
 script = ExtResource("6_o6xl0")
 
 [connection signal="game_start" from="." to="TileSystem" method="_on_main_game_start"]
+[connection signal="clicked" from="Cursor" to="TileSystem" method="mine"]
