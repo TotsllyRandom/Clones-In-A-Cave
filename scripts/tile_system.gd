@@ -38,12 +38,21 @@ func _on_main_game_start() -> void:
 	
 	## add ores
 	add_ores()
-	
-	## grow ores ( with add_ores() ?)
+
 	## structures?
+	
 	## obsidian borders
+	
 	## sync with other clients
 	make_tile_children()
+
+func obsidian(border:int):
+	var ret = []
+	var current_line = []
+	for i in range(border):
+		current_line = []
+		for x in range(map_data[0].size + border * 2):
+			current_line.append(tile_data.get_tile_by_name("Obsidian"))
 
 ## go through each tile and choose random (more likely for stone)
 func add_ores():
