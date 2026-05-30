@@ -85,7 +85,7 @@ func add_ores():
 		for x in range(map_data[0].size()):
 			if map_data[y][x] == tile_data.get_tile_by_name("Stone").get("tml_id"):
 				## that's just a long way of saying "if the current tile is stone"
-				for tile in tile_data.TILES:
+				for tile in tile_data.sort_tiles("rarity"):
 					if tile.get("natural") and tile.get("ore"):
 						if randi_range(0,tile.get("rarity")) == 0:
 							grow_ore(x,y,tile.get("tml_id"),tile.get("grow_rate"))
