@@ -53,11 +53,11 @@ const TILES = [
 		"strength": 5, ## time it takes to mine
 		"sell_price": 10, ## money made from mining
 		"natural": true, ## true if it will naturally generate
-		"rarity": 10, ## spawn rarity, ignore if not natural
+		"rarity": 20, ## spawn rarity, ignore if not natural
 		"ore": true, ## true if it generates as an ore, not like stone
 		
 		## ore settings, ignore if not ore
-		"grow_rate": 5, ## max times the vein will grow. 50/50 chance to grow once for each number
+		"grow_rate": 4, ## max times the vein will grow. 50/50 chance to grow once for each number
 	},
 	{
 		"name": "Gold",
@@ -65,11 +65,11 @@ const TILES = [
 		"strength": 20, ## time it takes to mine
 		"sell_price": 50, ## money made from mining
 		"natural": true, ## true if it will naturally generate
-		"rarity": 50, ## spawn rarity, ignore if not natural
+		"rarity": 80, ## spawn rarity, ignore if not natural
 		"ore": true, ## true if it generates as an ore, not like stone
 		
 		## ore settings, ignore if not ore
-		"grow_rate": 3, ## max times the vein will grow. 50/50 chance to grow once for each number
+		"grow_rate": 2, ## max times the vein will grow. 50/50 chance to grow once for each number
 	},
 ]
 

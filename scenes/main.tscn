@@ -4,6 +4,17 @@
 [ext_resource type="Script" uid="uid://couwg18fjmakf" path="res://scripts/tile_system.gd" id="2_sugp2"]
 [ext_resource type="PackedScene" uid="uid://driuf4wwrnuw0" path="res://scenes/tile.tscn" id="3_tbgi4"]
 [ext_resource type="Script" uid="uid://c00628kl3tx13" path="res://scripts/debug_camera.gd" id="4_jyhfs"]
+[ext_resource type="Texture2D" uid="uid://d0v0wjdflu0pg" path="res://assets/Tileset1.png" id="5_tefeu"]
+[ext_resource type="Script" uid="uid://bofxl6v1otk2n" path="res://scripts/cursor.gd" id="6_o6xl0"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tipki"]
+texture = ExtResource("5_tefeu")
+texture_region_size = Vector2i(32, 32)
+0:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_85g3d"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_tipki")
 
 [node name="Main" type="Node" unique_id=2144361390]
 script = ExtResource("1_0wfyh")
@@ -16,5 +27,9 @@ script = ExtResource("4_jyhfs")
 [node name="TileSystem" type="Node2D" parent="." unique_id=1052478466]
 script = ExtResource("2_sugp2")
 TILESCENE = ExtResource("3_tbgi4")
+
+[node name="Cursor" type="TileMapLayer" parent="." unique_id=1991806671]
+tile_set = SubResource("TileSet_85g3d")
+script = ExtResource("6_o6xl0")
 
 [connection signal="game_start" from="." to="TileSystem" method="_on_main_game_start"]
