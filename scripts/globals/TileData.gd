@@ -25,7 +25,7 @@ Layout:
 const TILES = [
 	{
 		"name": "Obsidian",
-		"tml_id": 3,
+		"tml_id": 4,
 		"strength": 20, ## time it takes to mine
 		"sell_price": 50, ## money made from mining
 		"natural": true, ## true if it will naturally generate
@@ -58,7 +58,7 @@ const TILES = [
 		"ore": true, ## true if it generates as an ore, not like stone
 		
 		## ore settings, ignore if not ore
-		"grow_rate": 4, ## max times the vein will grow. 50/50 chance to grow once for each number
+		"grow_rate": 3, ## max times the vein will grow. 50/50 chance to grow once for each number
 	},
 	{
 		"name": "Gold",
@@ -70,7 +70,20 @@ const TILES = [
 		"ore": true, ## true if it generates as an ore, not like stone
 		
 		## ore settings, ignore if not ore
-		"grow_rate": 2, ## max times the vein will grow. 50/50 chance to grow once for each number
+		"grow_rate": 1, ## max times the vein will grow. 50/50 chance to grow once for each number
+	},
+	
+	{
+		"name": "Coal",
+		"tml_id": 3,
+		"strength": 5, ## time it takes to mine
+		"sell_price": 5, ## money made from mining
+		"natural": true, ## true if it will naturally generate
+		"rarity": 18, ## spawn rarity, ignore if not natural
+		"ore": true, ## true if it generates as an ore, not like stone
+		
+		## ore settings, ignore if not ore
+		"grow_rate": 4, ## max times the vein will grow. 50/50 chance to grow once for each number
 	},
 ]
 

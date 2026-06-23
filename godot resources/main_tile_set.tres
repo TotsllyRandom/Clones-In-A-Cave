@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://6h0jtkw43pc4" path="res://assets/Tileset3.png" id="2_om4m1"]
 [ext_resource type="Texture2D" uid="uid://cmbou51vy23wp" path="res://assets/Tileset4.png" id="3_wn5hs"]
 [ext_resource type="Texture2D" uid="uid://b3la8w4v72u4j" path="res://assets/Tileset5.png" id="4_f0kc7"]
+[ext_resource type="Texture2D" uid="uid://cwhb85jae0th6" path="res://assets/Tileset6.png" id="5_mjosj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_om4m1"]
 resource_name = "Stone"
@@ -111,7 +112,7 @@ texture_region_size = Vector2i(32, 32)
 4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 16, -16, 0, 0, 0, 0, -16, 16, -16, 16, 0, 0, 0, 0, 16)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mjosj"]
-resource_name = "Obsidian"
+resource_name = "Coal"
 texture = ExtResource("4_f0kc7")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
@@ -145,6 +146,26 @@ texture_region_size = Vector2i(32, 32)
 4:2/0 = 0
 4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 16, -16, 0, 0, 0, 0, -16, 16, -16, 16, 0, 0, 0, 0, 16)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wvbxu"]
+resource_name = "Obsidian"
+texture = ExtResource("5_mjosj")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+
 [resource]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
@@ -152,3 +173,4 @@ sources/0 = SubResource("TileSetAtlasSource_om4m1")
 sources/1 = SubResource("TileSetAtlasSource_wn5hs")
 sources/2 = SubResource("TileSetAtlasSource_f0kc7")
 sources/3 = SubResource("TileSetAtlasSource_mjosj")
+sources/4 = SubResource("TileSetAtlasSource_wvbxu")
